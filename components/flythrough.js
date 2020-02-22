@@ -1,6 +1,5 @@
 import {useEffect} from 'react';
 import * as THREE from 'three';
-import Stats from 'three/examples/jsm/libs/stats.module.js';
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js';
 import {STLLoader} from 'three/examples/jsm/loaders/STLLoader.js';
 
@@ -112,7 +111,8 @@ export default () => {
 
             // renderer
 
-            renderer = new THREE.WebGLRenderer({antialias: true});
+            renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
+            renderer.setClearColor( 0x000000, 0 );
             renderer.setPixelRatio(window.devicePixelRatio);
             renderer.setSize(width, height);
             renderer.outputEncoding = THREE.sRGBEncoding;
@@ -123,7 +123,6 @@ export default () => {
             // scene
 
             scene = new THREE.Scene();
-            scene.background = new THREE.Color(0x000000);
 
             // controls
 
@@ -168,6 +167,6 @@ export default () => {
     }, []);
 
     return (
-        <div id='container'></div>
+        <div id='container' className="flex-1"></div>
     )
 };
