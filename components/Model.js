@@ -33,13 +33,15 @@ export default (props) => {
         };
 
         check.gyroscope(function () {
-            while(container.firstChild){
-                container.removeChild(container.lastChild)
-            }
-            gyroPresent = true;
-            init();
-            initMesh();
-            animate();
+            setTimeout( () => {
+                while(container.firstChild){
+                    container.removeChild(container.lastChild)
+                }
+                gyroPresent = true;
+                init();
+                initMesh();
+                animate();
+            }, 0 );
         });
         init();
         initMesh();
