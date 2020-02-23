@@ -16,7 +16,7 @@ export default (props) => {
 
         let frustumSize = 40;
         let aspect = window.innerWidth / window.innerHeight;
-        window.addEventListener('deviceorientation', (e) => {
+        window.addEventListener('deviceorientation', (event) => {
             if (event.rotationRate.alpha || event.rotationRate.beta || event.rotationRate.gamma)
                 gyroPresent = true;
         }, false);
