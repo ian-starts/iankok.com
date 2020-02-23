@@ -3,7 +3,6 @@ import * as THREE from 'three';
 import {TrackballControls} from 'three/examples/jsm/controls/TrackballControls.js';
 import {STLLoader} from 'three/examples/jsm/loaders/STLLoader.js';
 import {DeviceOrientationControls} from 'three/examples/jsm/controls/DeviceOrientationControls.js';
-import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js';
 
 
 export default (props) => {
@@ -12,14 +11,36 @@ export default (props) => {
 
         let container;
         let camera, controls, scene, renderer, material;
-        let gyroPresent = true;
+        let gyroPresent = false;
 
         let frustumSize = 40;
         let aspect = window.innerWidth / window.innerHeight;
-        window.addEventListener('deviceorientation', (event) => {
-            if (event.rotationRate.alpha || event.rotationRate.beta || event.rotationRate.gamma)
-                gyroPresent = true;
-        }, false);
+        let textMesh;
+        let textMeshGroup = new THREE.Group();
+        let group = new THREE.Group();
+        let check = {
+            gyroscope: function (callback) {
+                function handler(event) {
+                    var hasGyro = typeof event.alpha === 'number'
+                        && typeof event.beta === 'number'
+                        && typeof event.gamma === 'number';
+                    window.removeEventListener('deviceorientation', handler, false);
+                    callback(hasGyro);
+                }
+
+                window.addEventListener('deviceorientation', handler, false);
+            }
+        };
+
+        check.gyroscope(function () {
+            while(container.firstChild){
+                container.removeChild(container.lastChild)
+            }
+            gyroPresent = true;
+            init();
+            initMesh();
+            animate();
+        });
         init();
         initMesh();
         animate();
@@ -77,9 +98,10 @@ export default (props) => {
                     bevelSegments: 5,
                     align: 'center'
                 });
-                let mesh = new THREE.Mesh(geometry, material);
-                mesh.position.x = -8;
-                scene.add(mesh);
+                textMesh = new THREE.Mesh(geometry, material);
+                textMesh.position.x = -8;
+                textMeshGroup.add(textMesh);
+                group.add(textMeshGroup);
             });
 
         }
@@ -87,74 +109,53 @@ export default (props) => {
         function makeNaive(geometry) {
 
             let matrix = new THREE.Matrix4();
-
-            for (let i = 0; i < 500; i++) {
+            let count = gyroPresent ? 200 : 500;
+            for (let i = 0; i <  count; i++) {
 
                 randomizeMatrix(matrix);
 
                 let mesh = new THREE.Mesh(geometry, material);
                 mesh.applyMatrix4(matrix);
-                scene.add(mesh);
+                group.add(mesh);
 
             }
 
         }
 
         function init() {
+            let width = window.innerWidth;
+            let height = window.innerHeight;
+
+            // renderer
+
+            renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
+            renderer.setPixelRatio(window.devicePixelRatio);
+            renderer.setSize(width, height);
+            renderer.outputEncoding = THREE.sRGBEncoding;
+
+            container = document.getElementById('container');
+            container.appendChild(renderer.domElement);
+
+            // scene
+
+            scene = new THREE.Scene();
+            scene.add(group);
+            scene.add(textMeshGroup);
             if (gyroPresent) {
-                let width = window.innerWidth;
-                let height = window.innerHeight;
 
                 // camera
-
                 camera = new THREE.PerspectiveCamera(70, width / height, 1, 100);
-                camera.position.z = 30;
-
-                // renderer
-
-                renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
-                renderer.setPixelRatio(window.devicePixelRatio);
-                renderer.setSize(width, height);
-                renderer.outputEncoding = THREE.sRGBEncoding;
-
-                container = document.getElementById('container');
-                container.appendChild(renderer.domElement);
-
-                // scene
-
-                scene = new THREE.Scene();
-
-                // controls
-
-                controls = new DeviceOrientationControls(camera);
-
-                window.addEventListener('resize', onWindowResize, false);
-
-                Object.assign(window, {scene});
+                camera.position.z = 40;
+                controls = new DeviceOrientationControls(group);
             } else {
-                let width = window.innerWidth;
-                let height = window.innerHeight;
 
                 // camera
                 camera = new THREE.OrthographicCamera(frustumSize * aspect / -2, frustumSize * aspect / 2, frustumSize / 2, frustumSize / -2, 1, 1000);
                 camera.position.z = 100;
 
-                // world
-                scene = new THREE.Scene();
 
-                // renderer
-
-                renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
-                renderer.setPixelRatio(window.devicePixelRatio);
-                renderer.setSize(width, height);
-                renderer.outputEncoding = THREE.sRGBEncoding;
-
-                container = document.getElementById('container');
-                container.appendChild(renderer.domElement);
-
-
-                controls = new TrackballControls( camera, renderer.domElement );
-                controls.autoRotate = false;
+                controls = new TrackballControls(camera, renderer.domElement);
+                controls.autoRotate = true;
 
                 controls.rotateSpeed = 1.0;
                 controls.zoomSpeed = 1.2;
@@ -162,11 +163,10 @@ export default (props) => {
 
                 controls.keys = [65, 83, 68];
 
-                window.addEventListener('resize', onWindowResize, false);
-
-                Object.assign(window, {scene});
-
             }
+            window.addEventListener('resize', onWindowResize, false);
+
+            Object.assign(window, {scene});
         }
 
         //
@@ -184,17 +184,18 @@ export default (props) => {
                 camera.top = frustumSize / 2;
                 camera.bottom = -frustumSize / 2;
                 camera.updateProjectionMatrix();
+                controls.handleResize();
             }
 
             renderer.setSize(window.innerWidth, window.innerHeight);
-
-            controls.handleResize();
 
         }
 
         function animate() {
 
             requestAnimationFrame(animate);
+            textMeshGroup.rotation.y -= 0.002;
+            textMeshGroup.rotation.x -= 0.004;
 
             controls.update();
 
