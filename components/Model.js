@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import * as THREE from 'three';
-import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js';
+import {TrackballControls} from 'three/examples/jsm/controls/TrackballControls.js';
 import {STLLoader} from 'three/examples/jsm/loaders/STLLoader.js';
 
 
@@ -11,7 +11,8 @@ export default (props) => {
         let container;
         let camera, controls, scene, renderer, material;
 
-        //
+        let frustumSize = 40;
+        let aspect = window.innerWidth / window.innerHeight;
 
         init();
         initMesh();
@@ -25,9 +26,9 @@ export default (props) => {
 
             return function (matrix) {
 
-                position.x = Math.random() * 40 - 20;
-                position.y = Math.random() * 40 - 20;
-                position.z = Math.random() * 40 - 20;
+                position.x = Math.random() * 80 - 40;
+                position.y = Math.random() * 80 - 40;
+                position.z = Math.random() * 80 - 40;
 
                 rotation.x = Math.random() * 2 * Math.PI;
                 rotation.y = Math.random() * 2 * Math.PI;
@@ -60,17 +61,18 @@ export default (props) => {
 
                 let geometry = new THREE.TextGeometry(props.text, {
                     font: font,
-                    size: 3.5,
+                    size: 3,
                     height: 1,
                     curveSegments: 12,
                     bevelEnabled: true,
-                    bevelThickness: 0.1,
-                    bevelSize: 0.1,
+                    bevelThickness: 0.2,
+                    bevelSize: 0.2,
                     bevelOffset: 0,
-                    bevelSegments: 5
+                    bevelSegments: 5,
+                    align: 'center'
                 });
                 let mesh = new THREE.Mesh(geometry, material);
-                mesh.position.x = -6;
+                mesh.position.x = - 8;
                 scene.add(mesh);
             });
 
@@ -80,13 +82,12 @@ export default (props) => {
 
             let matrix = new THREE.Matrix4();
 
-            for (let i = 0; i < 200; i++) {
+            for (let i = 0; i < 500; i++) {
 
                 randomizeMatrix(matrix);
 
                 let mesh = new THREE.Mesh(geometry, material);
                 mesh.applyMatrix4(matrix);
-
                 scene.add(mesh);
 
             }
@@ -98,15 +99,15 @@ export default (props) => {
             let width = window.innerWidth;
             let height = window.innerHeight;
 
-            // camera
+            camera = new THREE.OrthographicCamera( frustumSize * aspect / - 2, frustumSize * aspect / 2, frustumSize / 2, frustumSize / - 2, 1, 1000 );
+            camera.position.z = 100;
 
-            camera = new THREE.PerspectiveCamera(70, width / height, 1, 100);
-            camera.position.z = 30;
+            // world
+            scene = new THREE.Scene();
 
             // renderer
 
             renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
-            renderer.setClearColor( 0x000000, 0 );
             renderer.setPixelRatio(window.devicePixelRatio);
             renderer.setSize(width, height);
             renderer.outputEncoding = THREE.sRGBEncoding;
@@ -114,14 +115,16 @@ export default (props) => {
             container = document.getElementById('container');
             container.appendChild(renderer.domElement);
 
-            // scene
-
-            scene = new THREE.Scene();
 
             // controls
 
-            controls = new OrbitControls(camera, renderer.domElement);
-            controls.autoRotate = false;
+            controls = new TrackballControls( camera, renderer.domElement );
+
+            controls.rotateSpeed = 1.0;
+            controls.zoomSpeed = 1.2;
+            controls.panSpeed = 0.8;
+
+            controls.keys = [ 65, 83, 68 ];
 
             window.addEventListener('resize', onWindowResize, false);
 
@@ -133,13 +136,18 @@ export default (props) => {
 
         function onWindowResize() {
 
-            let width = window.innerWidth;
-            let height = window.innerHeight;
 
-            camera.aspect = width / height;
+            let aspect = window.innerWidth / window.innerHeight;
+
+            camera.left = - frustumSize * aspect / 2;
+            camera.right = frustumSize * aspect / 2;
+            camera.top = frustumSize / 2;
+            camera.bottom = - frustumSize / 2;
             camera.updateProjectionMatrix();
 
-            renderer.setSize(width, height);
+            renderer.setSize( window.innerWidth, window.innerHeight );
+
+            controls.handleResize();
 
         }
 

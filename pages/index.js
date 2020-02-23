@@ -5,13 +5,13 @@ import dynamic from 'next/dynamic'
 export default function Index() {
 
     const ModelWithNoSSR = dynamic(
-        () => import('../components/model.js'),
+        () => import('../components/Model.js'),
         {ssr: false}
     );
 
     return (
         <div>
-            <ModelWithNoSSR text={"Ian Kok"}/>
+            <ModelWithNoSSR text={"Ian Kok\nDeveloper"}/>
         </div>
     );
 }
