@@ -1,19 +1,17 @@
-import react, {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import dynamic from 'next/dynamic'
 
 
 export default function Index() {
 
-    const DynamicComponentWithNoSSR = dynamic(
-        () => import('../components/flythrough.js'),
+    const ModelWithNoSSR = dynamic(
+        () => import('../components/model.js'),
         {ssr: false}
     );
 
     return (
         <div>
-            <div>
-            </div>
-            <DynamicComponentWithNoSSR/>
+            <ModelWithNoSSR text={"Ian Kok"}/>
         </div>
     );
 }

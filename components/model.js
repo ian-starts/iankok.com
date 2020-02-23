@@ -1,10 +1,10 @@
-import {useEffect} from 'react';
+import React, {useEffect} from 'react';
 import * as THREE from 'three';
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js';
 import {STLLoader} from 'three/examples/jsm/loaders/STLLoader.js';
 
 
-export default () => {
+export default (props) => {
 
     useEffect(() => {
 
@@ -15,7 +15,6 @@ export default () => {
 
         init();
         initMesh();
-        addText();
         animate();
         let randomizeMatrix = function () {
 
@@ -45,10 +44,9 @@ export default () => {
         }();
 
         function initMesh() {
-
+            material = new THREE.MeshNormalMaterial();
             new STLLoader().load('/models/cat.stl', function (geometry) {
                 geometry.scale(0.1,0.1,0.1);
-                material = new THREE.MeshNormalMaterial();
 
                 geometry.computeVertexNormals();
 
@@ -56,15 +54,11 @@ export default () => {
             }, null, (e) => {
                 console.log(e);
             });
-
-        }
-
-        function addText() {
             let loader = new THREE.FontLoader();
 
-            loader.load('https://threejs.org/examples/fonts/helvetiker_regular.typeface.json', function (font) {
+            loader.load('/fonts/helvetiker_regular.typeface.json', function (font) {
 
-                let geometry = new THREE.TextGeometry('yik.dev', {
+                let geometry = new THREE.TextGeometry(props.text, {
                     font: font,
                     size: 3.5,
                     height: 1,
@@ -76,11 +70,11 @@ export default () => {
                     bevelSegments: 5
                 });
                 let mesh = new THREE.Mesh(geometry, material);
-                mesh.position.x = -5;
+                mesh.position.x = -6;
                 scene.add(mesh);
             });
-        }
 
+        }
 
         function makeNaive(geometry) {
 
@@ -167,6 +161,6 @@ export default () => {
     }, []);
 
     return (
-        <div id='container' className="flex-1"></div>
+        <div id='container' className="flex-1"/>
     )
 };
