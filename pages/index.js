@@ -12,7 +12,7 @@ export default function Index() {
 
     return (
         <div>
-            <ModelWithNoSSR text={"Ian Kok\nDeveloper"}/>
+            <ModelWithNoSSR text={"Ian Kok ,\nDeveloper."}/>
             <Menu/>
         </div>
     );
