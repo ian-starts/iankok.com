@@ -12,7 +12,7 @@ export default (props) => {
 
         let container;
         let camera, controls, scene, renderer, material;
-        let gyroPresent = false;
+        let gyroPresent = true;
 
         let frustumSize = 40;
         let aspect = window.innerWidth / window.innerHeight;
