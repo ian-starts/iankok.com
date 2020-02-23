@@ -107,8 +107,8 @@ export default (props) => {
 
                 // camera
 
-                camera = new THREE.OrthographicCamera(frustumSize * aspect / -2, frustumSize * aspect / 2, frustumSize / 2, frustumSize / -2, 1, 1000);
-                camera.position.z = 100;
+                camera = new THREE.PerspectiveCamera(70, width / height, 1, 100);
+                camera.position.z = 30;
 
                 // renderer
 
@@ -153,7 +153,8 @@ export default (props) => {
                 container.appendChild(renderer.domElement);
 
 
-                controls = new DeviceOrientationControls(camera);
+                controls = new TrackballControls( camera, renderer.domElement );
+                controls.autoRotate = false;
 
                 controls.rotateSpeed = 1.0;
                 controls.zoomSpeed = 1.2;
