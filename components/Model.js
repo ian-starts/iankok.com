@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import * as THREE from 'three';
 import {TrackballControls} from 'three/examples/jsm/controls/TrackballControls.js';
 import {STLLoader} from 'three/examples/jsm/loaders/STLLoader.js';
+import { DeviceOrientationControls } from 'three/examples/jsm/controls/DeviceOrientationControls.js';
 
 
 export default (props) => {
@@ -10,6 +11,11 @@ export default (props) => {
 
         let container;
         let camera, controls, scene, renderer, material;
+        let gyroPresent = false;
+        window.addEventListener("devicemotion", function(event){
+            if(event.rotationRate.alpha || event.rotationRate.beta || event.rotationRate.gamma)
+                gyroPresent = true;
+        });
 
         let frustumSize = 40;
         let aspect = window.innerWidth / window.innerHeight;
@@ -117,14 +123,18 @@ export default (props) => {
 
 
             // controls
+            if(gyroPresent){
+                controls = new DeviceOrientationControls( camera );
+            }
+            else {
+                controls = new TrackballControls(camera, renderer.domElement);
 
-            controls = new TrackballControls( camera, renderer.domElement );
+                controls.rotateSpeed = 1.0;
+                controls.zoomSpeed = 1.2;
+                controls.panSpeed = 0.8;
 
-            controls.rotateSpeed = 1.0;
-            controls.zoomSpeed = 1.2;
-            controls.panSpeed = 0.8;
-
-            controls.keys = [ 65, 83, 68 ];
+                controls.keys = [65, 83, 68];
+            }
 
             window.addEventListener('resize', onWindowResize, false);
 
@@ -136,14 +146,19 @@ export default (props) => {
 
         function onWindowResize() {
 
+            if(gyroPresent){
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+            }
+            else{
+                let aspect = window.innerWidth / window.innerHeight;
 
-            let aspect = window.innerWidth / window.innerHeight;
-
-            camera.left = - frustumSize * aspect / 2;
-            camera.right = frustumSize * aspect / 2;
-            camera.top = frustumSize / 2;
-            camera.bottom = - frustumSize / 2;
-            camera.updateProjectionMatrix();
+                camera.left = - frustumSize * aspect / 2;
+                camera.right = frustumSize * aspect / 2;
+                camera.top = frustumSize / 2;
+                camera.bottom = - frustumSize / 2;
+                camera.updateProjectionMatrix();
+            }
 
             renderer.setSize( window.innerWidth, window.innerHeight );
 
