@@ -2,7 +2,8 @@ import React, {useEffect} from 'react';
 import * as THREE from 'three';
 import {TrackballControls} from 'three/examples/jsm/controls/TrackballControls.js';
 import {STLLoader} from 'three/examples/jsm/loaders/STLLoader.js';
-import { DeviceOrientationControls } from 'three/examples/jsm/controls/DeviceOrientationControls.js';
+import {DeviceOrientationControls} from 'three/examples/jsm/controls/DeviceOrientationControls.js';
+import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js';
 
 
 export default (props) => {
@@ -12,14 +13,13 @@ export default (props) => {
         let container;
         let camera, controls, scene, renderer, material;
         let gyroPresent = false;
-        window.addEventListener("devicemotion", function(event){
-            if(event.rotationRate.alpha || event.rotationRate.beta || event.rotationRate.gamma)
-                gyroPresent = true;
-        });
 
         let frustumSize = 40;
         let aspect = window.innerWidth / window.innerHeight;
-
+        window.addEventListener('deviceorientation', (e) => {
+            if (event.rotationRate.alpha || event.rotationRate.beta || event.rotationRate.gamma)
+                gyroPresent = true;
+        }, false);
         init();
         initMesh();
         animate();
@@ -53,7 +53,7 @@ export default (props) => {
         function initMesh() {
             material = new THREE.MeshNormalMaterial();
             new STLLoader().load('/models/cat.stl', function (geometry) {
-                geometry.scale(0.1,0.1,0.1);
+                geometry.scale(0.1, 0.1, 0.1);
 
                 geometry.computeVertexNormals();
 
@@ -78,7 +78,7 @@ export default (props) => {
                     align: 'center'
                 });
                 let mesh = new THREE.Mesh(geometry, material);
-                mesh.position.x = - 8;
+                mesh.position.x = -8;
                 scene.add(mesh);
             });
 
@@ -101,66 +101,91 @@ export default (props) => {
         }
 
         function init() {
+            if (gyroPresent) {
+                let width = window.innerWidth;
+                let height = window.innerHeight;
 
-            let width = window.innerWidth;
-            let height = window.innerHeight;
+                // camera
 
-            camera = new THREE.OrthographicCamera( frustumSize * aspect / - 2, frustumSize * aspect / 2, frustumSize / 2, frustumSize / - 2, 1, 1000 );
-            camera.position.z = 100;
+                camera = new THREE.OrthographicCamera(frustumSize * aspect / -2, frustumSize * aspect / 2, frustumSize / 2, frustumSize / -2, 1, 1000);
+                camera.position.z = 100;
 
-            // world
-            scene = new THREE.Scene();
+                // renderer
 
-            // renderer
+                renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
+                renderer.setPixelRatio(window.devicePixelRatio);
+                renderer.setSize(width, height);
+                renderer.outputEncoding = THREE.sRGBEncoding;
 
-            renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
-            renderer.setPixelRatio(window.devicePixelRatio);
-            renderer.setSize(width, height);
-            renderer.outputEncoding = THREE.sRGBEncoding;
+                container = document.getElementById('container');
+                container.appendChild(renderer.domElement);
 
-            container = document.getElementById('container');
-            container.appendChild(renderer.domElement);
+                // scene
+
+                scene = new THREE.Scene();
+
+                // controls
+
+                controls = new DeviceOrientationControls(camera);
+
+                window.addEventListener('resize', onWindowResize, false);
+
+                Object.assign(window, {scene});
+            } else {
+                let width = window.innerWidth;
+                let height = window.innerHeight;
+
+                // camera
+                camera = new THREE.OrthographicCamera(frustumSize * aspect / -2, frustumSize * aspect / 2, frustumSize / 2, frustumSize / -2, 1, 1000);
+                camera.position.z = 100;
+
+                // world
+                scene = new THREE.Scene();
+
+                // renderer
+
+                renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
+                renderer.setPixelRatio(window.devicePixelRatio);
+                renderer.setSize(width, height);
+                renderer.outputEncoding = THREE.sRGBEncoding;
+
+                container = document.getElementById('container');
+                container.appendChild(renderer.domElement);
 
 
-            // controls
-            if(gyroPresent){
-                controls = new DeviceOrientationControls( camera );
-            }
-            else {
-                controls = new TrackballControls(camera, renderer.domElement);
+                controls = new DeviceOrientationControls(camera);
 
                 controls.rotateSpeed = 1.0;
                 controls.zoomSpeed = 1.2;
                 controls.panSpeed = 0.8;
 
                 controls.keys = [65, 83, 68];
+
+                window.addEventListener('resize', onWindowResize, false);
+
+                Object.assign(window, {scene});
+
             }
-
-            window.addEventListener('resize', onWindowResize, false);
-
-            Object.assign(window, {scene});
-
         }
 
         //
 
         function onWindowResize() {
 
-            if(gyroPresent){
+            if (gyroPresent) {
                 camera.aspect = window.innerWidth / window.innerHeight;
                 camera.updateProjectionMatrix();
-            }
-            else{
+            } else {
                 let aspect = window.innerWidth / window.innerHeight;
 
-                camera.left = - frustumSize * aspect / 2;
+                camera.left = -frustumSize * aspect / 2;
                 camera.right = frustumSize * aspect / 2;
                 camera.top = frustumSize / 2;
-                camera.bottom = - frustumSize / 2;
+                camera.bottom = -frustumSize / 2;
                 camera.updateProjectionMatrix();
             }
 
-            renderer.setSize( window.innerWidth, window.innerHeight );
+            renderer.setSize(window.innerWidth, window.innerHeight);
 
             controls.handleResize();
 
