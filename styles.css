@@ -1,11 +1,17 @@
 /* purgecss start ignore */
 body {
     margin: 0;
-    background-image: radial-gradient(#fff 1px,#000000de 0),radial-gradient(#fff 1px,transparent 0);
+    background-image: radial-gradient(#fff 1px, #000000de 0), radial-gradient(#fff 1px, transparent 0);
     background-size: 52px 52px;
-    background-position: 0 15px,26px 40px;
+    background-position: 0 15px, 26px 40px;
 }
 @tailwind base;
+a {
+    @apply underline;
+}
+a:hover {
+    @apply line-through;
+}
 @tailwind components;
 /* purgecss end ignore */
 @tailwind utilities;
