@@ -24,10 +24,9 @@ export default (props) => {
                     <p className="text-white px-10 pb-10 text-l">
                         I love reading, sailing, surfing, being a digital
                         bromad, <a target="_blank" rel="noopener noreferrer" href={"https://herres.haus"}>throwing
-                        parties</a>, ridiculing political
-                        malpractice, watching <a target="_blank" rel="noopener noreferrer"
-                                                 href={"https://www.youtube.com/watch?v=MBRqu0YOH14"}>kurzgesagt</a> and
-                        other stuff I can't remember.
+                        parties</a>, worrying about political
+                        malpractice, and watching <a target="_blank" rel="noopener noreferrer"
+                                                     href={"https://www.youtube.com/watch?v=MBRqu0YOH14"}>kurzgesagt</a>.
                     </p>
                     <p className="text-white px-10 pb-10 text-l">
                         I'm currently working a lot with React Native (which I think is 70% the best thing ever, 30% the
@@ -37,15 +36,15 @@ export default (props) => {
                         composition API looks like it could steal React's thunder.
                     </p>
                     <p className="text-white px-10 pb-10 text-l">
-                        If I would have to say what my most pleasing development experience was, I would say deploying a
-                        kubernetes cluster on rancher. That piece of software is so magnificent I could honestly cry. If
-                        you ever want to chat with my about it I'm always available.
+                        If I would have to say what my most pleasing development experience was, I would say it was
+                        deploying a kubernetes cluster on rancher. That piece of software is so magnificent I could
+                        honestly cry. If you ever want to chat about it I'm always available.
                     </p>
                     <p className="text-white px-10 pb-10 text-l">
                         However my latest obsession would be Cognitive Behavioural Therapy. It is the most concrete
-                        translation of stoicism I've ever heard, and I'm working on bringing the therapy to more
-                        people. Being able to feel good should be for everyone. Hit me up if you want early access to
-                        the app or just want to chat.
+                        translation of stoicism I've ever heard, and I'm working with my close friend Pim on bringing
+                        the therapy to more people. Being able to feel good should be for everyone. Hit me up if you
+                        want early access to the app!
                     </p>
                     <p className="text-white px-10 pb-10 text-l">
                         Live long and prosper, Ian
