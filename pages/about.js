@@ -47,7 +47,7 @@ export default (props) => {
                     <p className="text-white pb-10 text-l">
                         My latest obsession would be Cognitive Behavioural Therapy. It is the most concrete
                         translation of stoicism I've ever come across, and I'm working with my close friend Pim on
-                        bringing the therapy to more people. Being able to feel good should be for everyone. Hit me up
+                        bringing the therapy to more people. Feeling good should be for everyone. Hit me up
                         if you're
                         interested!
                     </p>
