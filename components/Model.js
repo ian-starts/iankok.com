@@ -103,7 +103,7 @@ export default (props) => {
                 textMesh = new THREE.Mesh(geometry, material);
                 textMesh.position.x = -8;
                 textMeshGroup.add(textMesh);
-                group.add(textMeshGroup);
+                scene.add(textMeshGroup);
             });
 
         }
@@ -111,7 +111,7 @@ export default (props) => {
         function makeNaive(geometry) {
 
             let matrix = new THREE.Matrix4();
-            let count = gyroPresent ? 200 : 500;
+            let count = gyroPresent ? 200 : 350;
             for (let i = 0; i <  count; i++) {
 
                 randomizeMatrix(matrix);
@@ -196,8 +196,8 @@ export default (props) => {
         function animate() {
 
             requestAnimationFrame(animate);
-            textMeshGroup.rotation.y -= 0.002;
-            textMeshGroup.rotation.x -= 0.004;
+            group.rotation.y -= 0.0009;
+            group.rotation.x -= 0.0018;
 
             controls.update();
 
