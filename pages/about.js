@@ -12,7 +12,7 @@ export default (props) => {
                     <div className="flex flex-row">
                         <h1 className="text-white font-bold text-6xl md:text-7xl lg:text-8xl xl:text-8xl">ABOUT</h1>
                         <div className="px-10 self-center">
-                            <img src="/images/headshot-b-w-cirlce.png" alt="Smiley face" height="100" width="100"/>
+                            <img src="/images/headshot-b-w-cirlce.jpg" alt="Smiley face" className="rounded-full" height="100" width="100"/>
                         </div>
                     </div>
                     <h2 className="text-white pt-10 font-semibold leading-tight mt-20 text-2xl md:text-3xl lg:text-4xl xl:text-4xl">
