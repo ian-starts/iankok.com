@@ -12,12 +12,16 @@ export default (props) => {
         let container;
         let camera, controls, scene, renderer, material;
         let gyroPresent = false;
+        let cameraOrtho, mobileOrthoCamera, cameraPerspective, activeCamera, cameraRig;
 
-        let frustumSize = 40;
+        let frustumSize = 35;
+        let mobileFrustumSize = 55;
         let aspect = window.innerWidth / window.innerHeight;
         let textMesh;
         let textMeshGroup = new THREE.Group();
         let group = new THREE.Group();
+        let width = window.innerWidth;
+        let height = window.innerHeight;
         let check = {
             gyroscope: function (callback) {
                 function handler(event) {
@@ -33,19 +37,17 @@ export default (props) => {
         };
 
         check.gyroscope(function () {
-            setTimeout( () => {
-                while(container.firstChild){
-                    container.removeChild(container.lastChild)
-                }
+            setTimeout(() => {
                 gyroPresent = true;
-                init();
-                initMesh();
-                animate();
-            }, 0 );
+                activeCamera = mobileOrthoCamera;
+                controls = new DeviceOrientationControls(group);
+            }, 0);
         });
         init();
         initMesh();
+        addCamera();
         animate();
+
         let randomizeMatrix = function () {
 
             let position = new THREE.Vector3();
@@ -55,9 +57,9 @@ export default (props) => {
 
             return function (matrix) {
 
-                position.x = Math.random() * 80 - 40;
-                position.y = Math.random() * 80 - 40;
-                position.z = Math.random() * 80 - 40;
+                position.x = Math.random() * 70 - 35;
+                position.y = Math.random() * 70 - 35;
+                position.z = Math.random() * 70 - 35;
 
                 rotation.x = Math.random() * 2 * Math.PI;
                 rotation.y = Math.random() * 2 * Math.PI;
@@ -111,8 +113,8 @@ export default (props) => {
         function makeNaive(geometry) {
 
             let matrix = new THREE.Matrix4();
-            let count = gyroPresent ? 200 : 350;
-            for (let i = 0; i <  count; i++) {
+            let count = gyroPresent ? 150 : 250;
+            for (let i = 0; i < count; i++) {
 
                 randomizeMatrix(matrix);
 
@@ -125,8 +127,6 @@ export default (props) => {
         }
 
         function init() {
-            let width = window.innerWidth;
-            let height = window.innerHeight;
 
             // renderer
 
@@ -143,32 +143,37 @@ export default (props) => {
             scene = new THREE.Scene();
             scene.add(group);
             scene.add(textMeshGroup);
-            if (gyroPresent) {
+            Object.assign(window, {scene});
+        }
 
-                // camera
-                camera = new THREE.PerspectiveCamera(70, width / height, 1, 100);
-                camera.position.z = 40;
-                controls = new DeviceOrientationControls(group);
-            } else {
+        function addCamera() {
+            cameraPerspective = new THREE.PerspectiveCamera(70, width / height, 1, 100);
 
-                // camera
-                camera = new THREE.OrthographicCamera(frustumSize * aspect / -2, frustumSize * aspect / 2, frustumSize / 2, frustumSize / -2, 1, 1000);
-                camera.position.z = 100;
+            cameraOrtho = new THREE.OrthographicCamera(frustumSize * aspect / -2, frustumSize * aspect / 2, frustumSize / 2, frustumSize / -2, 1, 1000);
+            cameraOrtho.position.z = 100;
+
+            mobileOrthoCamera = new THREE.OrthographicCamera(mobileFrustumSize * aspect / -2, mobileFrustumSize * aspect / 2, mobileFrustumSize / 2, mobileFrustumSize / -2, 1, 1000);
+            mobileOrthoCamera.position.z = 100;
+
+            cameraRig = new THREE.Group();
+
+            cameraRig.add(cameraOrtho);
+            cameraRig.add(mobileOrthoCamera);
+            activeCamera = cameraOrtho;
+
+            scene.add(cameraRig);
+
+            controls = new TrackballControls(activeCamera, renderer.domElement);
+
+            controls.rotateSpeed = 1.0;
+            controls.zoomSpeed = 1.2;
+            controls.panSpeed = 0.8;
+
+            controls.keys = [65, 83, 68];
 
 
-                controls = new TrackballControls(camera, renderer.domElement);
-                controls.autoRotate = true;
-
-                controls.rotateSpeed = 1.0;
-                controls.zoomSpeed = 1.2;
-                controls.panSpeed = 0.8;
-
-                controls.keys = [65, 83, 68];
-
-            }
             window.addEventListener('resize', onWindowResize, false);
 
-            Object.assign(window, {scene});
         }
 
         //
@@ -206,8 +211,8 @@ export default (props) => {
         }
 
         function render() {
-
-            renderer.render(scene, camera);
+            activeCamera.updateProjectionMatrix();
+            renderer.render(scene, activeCamera);
 
         }
     }, []);
