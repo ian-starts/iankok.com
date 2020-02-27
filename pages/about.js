@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Link from "next/link";
+import styles from './css/about.module.css'
 
 export default (props) => {
     return (
@@ -20,16 +21,16 @@ export default (props) => {
                     </h2>
                     <p className="text-white py-10 text-l">
                         I guess the most important thing that I want this page to say is that I am not one thing.
-                        I heard <a target="_blank" rel="noopener noreferrer" href={"https://twitter.com/naval"}>Naval
+                        I heard <a className="link" target="_blank" rel="noopener noreferrer" href={"https://twitter.com/naval"}>Naval
                         Ravikant</a> say
                         that humans aren't meant to focus their entire lives on doing one thing. I wholeheartedly agree.
                         We are an incredibly versatile species, and it would be a shame to waste that versatility.
                     </p>
                     <p className="text-white pb-10 text-l">
                         I love reading, sailing, surfing, being a digital
-                        bromad, <a target="_blank" rel="noopener noreferrer" href={"https://herres.haus"}>throwing
+                        bromad, <a className="link" target="_blank" rel="noopener noreferrer" href={"https://herres.haus"}>throwing
                         parties</a>, worrying about political
-                        malpractice, and watching <a target="_blank" rel="noopener noreferrer"
+                        malpractice, and watching <a className="link" target="_blank" rel="noopener noreferrer"
                                                      href={"https://www.youtube.com/watch?v=MBRqu0YOH14"}>kurzgesagt</a>.
                     </p>
                     <p className="text-white pb-10 text-l">
