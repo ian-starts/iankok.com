@@ -1,9 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import Link from "next/link";
-import '@fortawesome/fontawesome-svg-core/styles.css' // Import the CSS
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faTwitter, faLinkedin} from '@fortawesome/free-brands-svg-icons'
-import {faEnvelope} from '@fortawesome/free-solid-svg-icons'
+import LinkedIn from '../svgs/linkedin-in-brands.svg'
+import Envelope from '../svgs/envelope-solid.svg'
+import Twitter from '../svgs/twitter-brands.svg'
 
 export default (props) => {
     return (
@@ -20,25 +19,25 @@ export default (props) => {
                         <h2 className="text-white pt-10 font-semibold leading-tight mt-20 text-2xl md:text-3xl lg:text-4xl xl:text-4xl">
                             Get in touch!
                         </h2>
-                        <ul className="flex flex-row flex-wrap mt-5 ml-10">
+                        <ul className="flex flex-row flex-wrap mt-3 ml-10">
                             <li className={"mx-2"}>
                                 <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/starts_ian">
-                                    <div className="p-3 align-middle bg-white border-4" style={{borderRadius: '100%', borderColor: '#9600ff'}}>
-                                        <FontAwesomeIcon size={'2x'} icon={faTwitter}/>
+                                    <div className="p-3 align-middle bg-white border-4 w-16 h-16" style={{borderRadius: '100%', borderColor: '#9600ff'}}>
+                                        <Twitter/>
                                     </div>
                                 </a>
                             </li>
                             <li className={"mx-2"}>
                                 <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/yoni-kok-b0885813a/">
-                                    <div className="p-3 align-middle bg-white border-4" style={{borderRadius: '100%', borderColor: '#9600ff'}}>
-                                        <FontAwesomeIcon size={'2x'} icon={faLinkedin}/>
+                                    <div className="p-4 align-middle bg-white border-4 w-16 h-16" style={{borderRadius: '100%', borderColor: '#9600ff'}}>
+                                        <LinkedIn/>
                                     </div>
                                 </a>
                             </li>
                             <li className={"mx-2"}>
                                 <a target="_blank" rel="noopener noreferrer" href="mailto:hello@iankok.com">
-                                    <div className="p-3 align-middle bg-white border-4" style={{borderRadius: '100%', borderColor: '#9600ff'}}>
-                                        <FontAwesomeIcon size={'2x'} icon={faEnvelope}/>
+                                    <div className="p-3 align-middle bg-white border-4 w-16 h-16" style={{borderRadius: '100%', borderColor: '#9600ff'}}>
+                                        <Envelope/>
                                     </div>
                                 </a>
                             </li>
