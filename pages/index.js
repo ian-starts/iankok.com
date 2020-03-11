@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import Menu from '../components/Menu'
 import dynamic from 'next/dynamic'
+import Layout from "../components/Layout";
 
 
 export default function Index() {
@@ -11,9 +12,9 @@ export default function Index() {
     );
 
     return (
-        <div>
+        <Layout>
             <ModelWithNoSSR text={"Ian Kok ,\nDeveloper."}/>
             <Menu/>
-        </div>
+        </Layout>
     );
 }

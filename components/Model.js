@@ -181,16 +181,16 @@ export default (props) => {
         function onWindowResize() {
 
             if (gyroPresent) {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
+                activeCamera.aspect = window.innerWidth / window.innerHeight;
+                activeCamera.updateProjectionMatrix();
             } else {
                 let aspect = window.innerWidth / window.innerHeight;
 
-                camera.left = -frustumSize * aspect / 2;
-                camera.right = frustumSize * aspect / 2;
-                camera.top = frustumSize / 2;
-                camera.bottom = -frustumSize / 2;
-                camera.updateProjectionMatrix();
+                activeCamera.left = -frustumSize * aspect / 2;
+                activeCamera.right = frustumSize * aspect / 2;
+                activeCamera.top = frustumSize / 2;
+                activeCamera.bottom = -frustumSize / 2;
+                activeCamera.updateProjectionMatrix();
                 controls.handleResize();
             }
 
