@@ -1,10 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import Link from "next/link";
 import styles from './css/about.module.css'
 import Layout from "../components/Layout";
-import Twitter from "../svgs/twitter-brands.svg";
-import LinkedIn from "../svgs/linkedin-in-brands.svg";
 import LogoParley from "../svgs/logo-parley.svg";
+import LogoFlairtable from "../svgs/logo-flairtable.svg";
 import LogoJoin from "../svgs/logo-join.svg"
 
 export default (props) => {
@@ -26,6 +25,28 @@ export default (props) => {
                         </p>
                         <ul className="flex flex-col flex-wrap mt-3 ml-0 sm:ml-10">
                             <li className="mx-2 flex flex-row my-2">
+                                <a target="_blank" rel="noopener noreferrer" href="https://flairtable.com"
+                                   className="sm:self-center">
+                                    <div className="p-3 pt-4 align-middle bg-white border-4 w-16 h-16 sm:w-20 sm:h-20"
+                                         style={{borderRadius: '100%', borderColor: '#9600ff'}}>
+                                        <LogoFlairtable/>
+                                    </div>
+                                </a>
+                                <div className="self-center">
+                                    <p className="text-white px-5 self-center font-bold text-sm sm:text-lg">
+                                        Flairtable
+                                    </p>
+                                    <p className="text-white px-5 self-center text-sm sm:text-l">
+                                        Flairtable is essentially a security layer over Airtable. It allows you to scope
+                                        your API key and make Airtable usable in frontends and clients. It's written as
+                                        a typescript cloudfunction and has a JavaScript package for easy implementation.
+                                    </p>
+                                    <p className="text-white px-5 self-center font-bold text-sm sm:text-l">
+                                        JavaScrip, TypeScript, Node, Firebase
+                                    </p>
+                                </div>
+                            </li>
+                            <li className="mx-2 flex flex-row my-2">
                                 <a target="_blank" rel="noopener noreferrer" href="https://getparley.app"
                                    className="sm:self-center">
                                     <div className="align-middle bg-white border-4 w-16 h-16 sm:w-20 sm:h-20"
@@ -38,7 +59,7 @@ export default (props) => {
                                         Parley
                                     </p>
                                     <p className="text-white px-5 self-center text-sm sm:text-l">
-                                        Parley is my most recent project. It helps people overcome anxiety and mental
+                                        Parley helps people overcome anxiety and mental
                                         problems by using <a className="link" target="_blank"
                                                              rel="noopener noreferrer"
                                                              href={"https://blog.iankok.com/the-steps-of-cbt"}>CBT</a>(Cognitive
