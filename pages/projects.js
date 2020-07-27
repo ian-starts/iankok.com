@@ -5,6 +5,7 @@ import Layout from "../components/Layout";
 import LogoParley from "../svgs/logo-parley.svg";
 import LogoFlairtable from "../svgs/logo-flairtable.svg";
 import LogoJoin from "../svgs/logo-join.svg"
+import LogoLoopground from "../svgs/logo-loopground.svg"
 
 export default (props) => {
     return (
@@ -24,6 +25,32 @@ export default (props) => {
                             know more about older projects: <Link href={"/contact"}><a className="link">let me know!</a></Link>
                         </p>
                         <ul className="flex flex-col flex-wrap mt-3 ml-0 sm:ml-10">
+                            <li className="mx-2 flex flex-row my-2">
+                                <a target="_blank" rel="noopener noreferrer" href="https://loopground.com"
+                                   className="sm:self-center">
+                                    <div className="p-3 align-middle bg-white border-4 w-16 h-16 sm:w-20 sm:h-20"
+                                         style={{borderRadius: '100%', borderColor: '#9600ff'}}>
+                                        <LogoLoopground/>
+                                    </div>
+                                </a>
+                                <div className="self-center">
+                                    <p className="text-white px-5 self-center font-bold text-sm sm:text-lg">
+                                        Loopground
+                                    </p>
+                                    <p className="text-white px-5 self-center text-sm sm:text-l">
+                                        Loopground is my latest venture. I love building things with electrical
+                                        components, but it always sucks that Sparkfun and Adafruit are ridiculously
+                                        expensive. Ordering from china is a possibility but much like forrest gump's box
+                                        of chocolates: you never know what you gon' get. Loopground sources pre-vetted
+                                        components from china for a very good price, and with great docs. We're
+                                        currently experimenting with "kits" so people can easily start building cool DIY
+                                        projects.
+                                    </p>
+                                    <p className="text-white px-5 self-center font-bold text-sm sm:text-l">
+                                        .NET Core, Nuxt.js, Kubernetes, RabbitMQ
+                                    </p>
+                                </div>
+                            </li>
                             <li className="mx-2 flex flex-row my-2">
                                 <a target="_blank" rel="noopener noreferrer" href="https://flairtable.com"
                                    className="sm:self-center">
