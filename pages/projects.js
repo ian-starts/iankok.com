@@ -191,7 +191,7 @@ export default (props) => {
                             rel="noopener noreferrer"
                             href={"https://github.com/ian-starts/iankok.com"}>source code of this site
                         </a> if you
-                            think it's dope (I do). There are also some archived things in Lumen, Next.js, Gatsby and
+                            think it's dope (I do). There are also some archived things in .NET Core, Lumen, Next.js, Gatsby and
                             Nuxt.js if you want to check that out.<br/> All in all, I love .NET Core, wouldn't mind
                             having to build in
                             Laravel, know my way around AWS and a Kubernets cluster, and can build a functional and fast
