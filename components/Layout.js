@@ -20,8 +20,8 @@ export default (props) => {
                 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"/>
                 <meta name="msapplication-TileColor" content="#da532c"/>
                 <meta name="theme-color" content="#ffffff"/>
-                <title>{props.title ?? "Ian Kok"}</title>
-                <meta name="title" content={props.title ?? "Ian Kok"}/>
+                <title>{props.title ?? "Yik.dev"}</title>
+                <meta name="title" content={props.title ?? "Yik.dev"}/>
                 <meta name="description"
                       content={props.description ?? "A personal website where you can learn a bit about me! Developer, Surfer, and loving side projects."}/>
 

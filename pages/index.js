@@ -13,7 +13,7 @@ export default function Index() {
 
     return (
         <Layout>
-            <ModelWithNoSSR text={"Ian Kok ,\nDeveloper."}/>
+            <ModelWithNoSSR text={"Yik.dev\nSoftware, \nconsultancy."}/>
             <Menu/>
         </Layout>
     );
