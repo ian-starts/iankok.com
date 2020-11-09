@@ -20,7 +20,7 @@ export default (props) => {
                             </div>
                         </div>
                         <h2 className="text-white pt-10 font-semibold leading-tight mt-20 text-2xl md:text-3xl lg:text-4xl xl:text-4xl">
-                            10% serious, 90% unfinished side projects
+                            Move fast break things.
                         </h2>
                         <p className="text-white py-10 text-l">
                             I guess the most important thing that I want this page to say is that I am not one thing.
@@ -34,18 +34,18 @@ export default (props) => {
                         <p className="text-white pb-10 text-l">
                             I love reading, sailing, surfing, being a digital
                             bromad, <a className="link" target="_blank" rel="noopener noreferrer"
-                                       href={"https://herres.haus"}>throwing
-                            parties</a>, worrying about political
+                                       href={"https://herres.haus"}>standing behind the decks</a>, worrying about
+                            political
                             malpractice, and watching <a className="link" target="_blank" rel="noopener noreferrer"
                                                          href={"https://www.youtube.com/watch?v=MBRqu0YOH14"}>kurzgesagt</a>.
                         </p>
-                        <p className="text-white pb-10 text-l">
-                            I'm currently working a lot with React Native (which I think is 70% the best thing ever, 30%
-                            the
-                            worst thing ever). I've worked a lot with .NET core in tandem with postgres or mongo.
-                            Laravel is
-                            my former lover, but after discovering the power of C# in .NET core I was quickly cured
-                            of my love for PHP. React is my favorite frontend framework so far, however the new Vue
+                        <p className="text-white pb-10 text-l">I've worked a lot with .NET core in tandem with postgres
+                            or mongo.
+                            Laravel is my former lover, but after discovering the power of C# in .NET core I can't help
+                            but love C# more.
+                            PHP will always have a special place in my heart though, and would still love working with
+                            it.
+                            React is my favorite frontend framework so far, however the new Vue
                             composition API looks like it could steal React's thunder.
                         </p>
                         <p className="text-white pb-10 text-l">
@@ -56,11 +56,19 @@ export default (props) => {
                             I'm always available.
                         </p>
                         <p className="text-white pb-10 text-l">
-                            My latest obsession would be Cognitive Behavioural Therapy. It is the most concrete
-                            translation of stoicism I've ever come across, and I'm working with my close friend Pim on
+                            One of my more interesting obsessions would be Cognitive Behavioural Therapy. It is the most
+                            concrete
+                            translation of stoicism I've ever come across. Though I've shelved the release of
+                            Parley a bit, I still believe in
                             bringing the therapy to more people. Feeling good should be for everyone. Hit me up
                             if you're
                             interested!
+                        </p>
+                        <p className="text-white pb-10 text-l">
+                            My latest venture is <a href="https://loopground.com" target="_blank">loopground</a>,
+                            and snugly fits into my philosophy of the 4 hour work week. Only four hours a week are spent
+                            on the dreadful bits, the rest can be categorized as hobby stuff. After a few intense months
+                            of building, it's now time to start generating revenue! Super stoked about this:)
                         </p>
                         <p className="text-white pb-10 text-l">
                             Live long and prosper, <br/>Ian
