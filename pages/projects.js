@@ -26,6 +26,35 @@ export default (props) => {
                         </p>
                         <ul className="flex flex-col flex-wrap mt-3 ml-0 sm:ml-10">
                             <li className="mx-2 flex flex-row my-2">
+                                <a target="_blank" rel="noopener noreferrer" href="https://thaly.nl"
+                                   className="sm:self-center">
+                                    <div
+                                        className="p-3 flex items-center align-middle bg-white border-4 w-16 h-16 sm:w-20 sm:h-20"
+                                        style={{borderRadius: '100%', borderColor: '#9600ff'}}>
+                                        <img src="/images/logo-thaly.png" alt="Thaly B.V."
+                                             className="rounded-full"
+                                             height="100" width="100"/>
+                                    </div>
+                                </a>
+                                <div className="self-center">
+                                    <p className="text-white px-5 self-center font-bold text-sm sm:text-lg">
+                                        Thaly
+                                    </p>
+                                    <p className="text-white px-5 self-center text-sm sm:text-l">
+                                        Thaly requested full automation for their webshop in medical and safety
+                                        equipment. As a lead developer and greenfield architect I built and deployed a
+                                        solution to reduce his workload from almost an FTE to 4 hours a week. I
+                                        translated user requests into a functional MVP and created a sprint based
+                                        release schedule with live demos. This projects is ongoing to reduce his
+                                        workload to max 1 hour per week. It’s built in .NET Core 3.1, and uses a custom
+                                        dashboard in React.
+                                    </p>
+                                    <p className="text-white px-5 self-center font-bold text-sm sm:text-l">
+                                        .NET Core, Next.js, Kubernetes
+                                    </p>
+                                </div>
+                            </li>
+                            <li className="mx-2 flex flex-row my-2">
                                 <a target="_blank" rel="noopener noreferrer" href="https://loopground.com"
                                    className="sm:self-center">
                                     <div className="p-3 align-middle bg-white border-4 w-16 h-16 sm:w-20 sm:h-20"
@@ -115,9 +144,12 @@ export default (props) => {
                                         Join - Influencer Marketing
                                     </p>
                                     <p className="text-white px-5 self-center text-sm sm:text-l">
-                                        As a freelance developer I helped Join grow their business. I mostly worked
-                                        on implementing API's for the various platforms they are connected to, and their
-                                        "fake followers" detection algorithm.
+                                        As a senior backend developer in this young start up, I was mostly responsible
+                                        for rapid
+                                        progress. Building features as fast as possible to grow as fast as possible. I
+                                        was responsible for migrating their monolith to a separated API based platform,
+                                        and build features such as social outreach predication, and campaign success
+                                        metrics.
                                     </p>
                                     <p className="text-white px-5 self-center font-bold text-sm sm:text-l">
                                         Laravel, ElasticSearch, MySql
@@ -125,7 +157,39 @@ export default (props) => {
                                 </div>
                             </li>
                             <li className="mx-2 flex flex-row my-3">
-                                <a target="_blank" rel="noopener noreferrer" href="https://getparley.app"
+                                <a target="_blank" rel="noopener noreferrer" href="https://travelflow.com"
+                                   className="sm:self-center">
+                                    <div
+                                        className="p-3 flex items-center align-middle bg-white border-4 w-16 h-16 sm:w-20 sm:h-20"
+                                        style={{borderRadius: '100%', borderColor: '#9600ff'}}>
+                                        <img src="/images/travelflow-logo.png" alt="Travel Flow"
+                                             className="rounded-full"
+                                             height="100" width="100"/>
+                                    </div>
+                                </a>
+                                <div className="self-center">
+                                    <p className="text-white px-5 self-center font-bold text-sm sm:text-lg">
+                                        Travel Flow - Travel Package
+                                    </p>
+                                    <p className="text-white px-5 self-center text-sm sm:text-l">
+                                        Travelflow wanted to build a booking engine, combining flights, hotels and event
+                                        tickets. As lead developer I was responsible for charting the business
+                                        requirements from the employees and translating that into domain sketches. From
+                                        those domain sketches, we started building an MVP and creating a team of
+                                        developers. I did most of the interviews to determine developer skill, and to
+                                        stay on release track. After assembling a backend team and writing a lot of C#
+                                        code, I also created the requirements for the CMS in React. While not building a
+                                        lot of React, I was reviewing the bulk of the PR’s. We deployed the solution as
+                                        a microservice landscape on AWS. Using SQS as a service bus and Fargate as a
+                                        container manager.
+                                    </p>
+                                    <p className="text-white px-5 self-center font-bold text-sm sm:text-l">
+                                        Laravel, MySql, Redis
+                                    </p>
+                                </div>
+                            </li>
+                            <li className="mx-2 flex flex-row my-3">
+                                <a target="_blank" rel="noopener noreferrer" href="https://travelflow.com"
                                    className="sm:self-center">
                                     <div
                                         className="p-3 flex items-center align-middle bg-white border-4 w-16 h-16 sm:w-20 sm:h-20"
@@ -148,36 +212,7 @@ export default (props) => {
                                         Design, SOLID, SQRS, and (excuse my french) a microservice architecture.
                                     </p>
                                     <p className="text-white px-5 self-center font-bold text-sm sm:text-l">
-                                        .NET Core, PostgreSQL, MongoDB, RabbitMQ, Redis, Kubernetes, Docker
-                                    </p>
-                                </div>
-                            </li>
-                            <li className="mx-2 flex flex-row my-3">
-                                <a target="_blank" rel="noopener noreferrer" href="https://getparley.app"
-                                   className="sm:self-center">
-                                    <div
-                                        className="p-3 flex items-center align-middle bg-white border-4 w-16 h-16 sm:w-20 sm:h-20"
-                                        style={{borderRadius: '100%', borderColor: '#9600ff'}}>
-                                        <img src="/images/travelflow-logo.png" alt="Travel Flow"
-                                             className="rounded-full"
-                                             height="100" width="100"/>
-                                    </div>
-                                </a>
-                                <div className="self-center">
-                                    <p className="text-white px-5 self-center font-bold text-sm sm:text-lg">
-                                        Travel Flow - Travel Package
-                                    </p>
-                                    <p className="text-white px-5 self-center text-sm sm:text-l">
-                                        A big reason behind the building of the aforementioned back-end was a desire to
-                                        sell those tickets in combination with airplane tickets and hotel rooms.
-                                        Together with <a className="link" target="_blank"
-                                                         rel="noopener noreferrer"
-                                                         href={"https://www.wearetriple.com/"}>Triple
-                                    </a> we build a whitelabel checkout for ordering Travel Flow tickets with hotels and
-                                        flights.
-                                    </p>
-                                    <p className="text-white px-5 self-center font-bold text-sm sm:text-l">
-                                        Laravel, MySql, Redis
+                                        Laravel, .NET Core, PostgreSQL, MongoDB, RabbitMQ, Redis, Kubernetes, Docker
                                     </p>
                                 </div>
                             </li>
@@ -191,7 +226,8 @@ export default (props) => {
                             rel="noopener noreferrer"
                             href={"https://github.com/ian-starts/iankok.com"}>source code of this site
                         </a> if you
-                            think it's dope (I do). There are also some archived things in .NET Core, Lumen, Next.js, Gatsby and
+                            think it's dope (I do). There are also some archived things in .NET Core, Lumen, Next.js,
+                            Gatsby and
                             Nuxt.js if you want to check that out.<br/> All in all, I love .NET Core, wouldn't mind
                             having to build in
                             Laravel, know my way around AWS and a Kubernets cluster, and can build a functional and fast
