@@ -6,6 +6,7 @@ import LogoParley from "../svgs/logo-parley.svg";
 import LogoFlairtable from "../svgs/logo-flairtable.svg";
 import LogoJoin from "../svgs/logo-join.svg"
 import LogoLoopground from "../svgs/logo-loopground.svg"
+import LogoFlanderijn from "../svgs/logo-flanderijn.svg"
 
 export default (props) => {
     return (
@@ -25,6 +26,31 @@ export default (props) => {
                             know more about older projects: <Link href={"/contact"}><a className="link">let me know!</a></Link>
                         </p>
                         <ul className="flex flex-col flex-wrap mt-3 ml-0 sm:ml-10">
+                            <li className="mx-2 flex flex-row my-2">
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.flanderijn.nl/"
+                                   className="sm:self-center">
+                                    <div className="p-3 align-middle bg-white border-4 w-16 h-16 sm:w-20 sm:h-20"
+                                         style={{borderRadius: '100%', borderColor: '#9600ff'}}>
+                                        <LogoFlanderijn/>
+                                    </div>
+                                </a>
+                                <div className="self-center">
+                                    <p className="text-white px-5 self-center font-bold text-sm sm:text-lg">
+                                        Flanderijn
+                                    </p>
+                                    <p className="text-white px-5 self-center text-sm sm:text-l">
+                                        Over at Flanderijn I was responsible for connecting their largest clients to
+                                        their internal software package. I worked intensely with large banks such as
+                                        ABN AMRO and ING to automate their debt management and build a highly
+                                        scalable distributed system capable of handling the spiky load. Initially a
+                                        6 month contract, we extended twice due to a very pleasant work dynamic,
+                                        and needing to keep a senior on-board.
+                                    </p>
+                                    <p className="text-white px-5 self-center font-bold text-sm sm:text-l">
+                                        .NET Core, Nuxt.js, Kubernetes, RabbitMQ
+                                    </p>
+                                </div>
+                            </li>
                             <li className="mx-2 flex flex-row my-2">
                                 <a target="_blank" rel="noopener noreferrer" href="https://thaly.nl"
                                    className="sm:self-center">
@@ -228,9 +254,8 @@ export default (props) => {
                         </a> if you
                             think it's dope (I do). There are also some archived things in .NET Core, Lumen, Next.js,
                             Gatsby and
-                            Nuxt.js if you want to check that out.<br/> All in all, I love .NET Core, wouldn't mind
-                            having to build in
-                            Laravel, know my way around AWS and a Kubernets cluster, and can build a functional and fast
+                            Nuxt.js if you want to check that out.<br/> All in all, I love .NET, know my way around
+                            AWS, Azure, and a Kubernets cluster, and can build a functional and fast
                             front-end. Oh, and I'm always <Link href={"/contact"}><a className="link"
                             >open for a chat!</a></Link></p>
                     </div>

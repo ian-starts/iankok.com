@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 69 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group</title>
+    <defs>
+        <filter id="filter-1">
+            <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0.000000 0 0 0 0 0.000000 0 0 0 0 0.000000 0 0 0 1.000000 0"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g filter="url(#filter-1)" id="Group">
+            <g>
+                <path d="M17.09,59.18 L0,29.59 L17.09,2.84217094e-14 L51.26,2.84217094e-14 L68.35,29.59 L51.97,57.95 L49.57,59.18 L17.09,59.18 Z M46.7,51.29 L59.23,29.59 L46.7,7.89 L21.65,7.89 L9.12,29.59 L21.65,51.29 L46.71,51.29 L46.7,51.29 Z" id="Shape" fill="#FFFFFF" fill-rule="nonzero"></path>
+                <path d="M58.38,56.37 L32.63,63.27 L13.78,44.42 L20.68,18.67 L46.42,11.77 L65.27,30.62 L58.38,56.37 Z M58.38,32.46 L44.57,18.67 L25.69,23.73 L20.63,42.61 L34.45,56.43 L53.35,51.37 L58.38,32.46 Z" id="Shape" fill="#FFFFFF" fill-rule="nonzero"></path>
+                <path d="M65.36,52.37 L46.5,63.26 L27.65,52.37 L27.65,30.62 L46.51,19.73 L65.37,30.62 L65.37,52.37 L65.36,52.37 Z M60.36,33.5 L46.53,25.5 L32.7,33.5 L32.7,49.5 L46.53,57.5 L60.36,49.5 L60.36,33.5 Z" id="Shape" fill="#FFFFFF" fill-rule="nonzero"></path>
+            </g>
+        </g>
+    </g>
+</svg>

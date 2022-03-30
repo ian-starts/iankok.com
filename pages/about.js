@@ -20,18 +20,9 @@ export default (props) => {
                             </div>
                         </div>
                         <h2 className="text-white pt-10 font-semibold leading-tight mt-20 text-2xl md:text-3xl lg:text-4xl xl:text-4xl">
-                            Move fast break things.
+                            Pitter Patter...
                         </h2>
                         <p className="text-white py-10 text-l">
-                            I guess the most important thing that I want this page to say is that I am not one thing.
-                            I heard <a className="link" target="_blank" rel="noopener noreferrer"
-                                       href={"https://twitter.com/naval"}>Naval
-                            Ravikant</a> say
-                            that humans aren't meant to focus their entire lives on doing one thing. I wholeheartedly
-                            agree.
-                            We are an incredibly versatile species, and it would be a shame to waste that versatility.
-                        </p>
-                        <p className="text-white pb-10 text-l">
                             I love reading, sailing, surfing, being a digital
                             bromad, <a className="link" target="_blank" rel="noopener noreferrer"
                                        href={"https://herres.haus"}>standing behind the decks</a>, worrying about
@@ -39,36 +30,22 @@ export default (props) => {
                             malpractice, and watching <a className="link" target="_blank" rel="noopener noreferrer"
                                                          href={"https://www.youtube.com/watch?v=MBRqu0YOH14"}>kurzgesagt</a>.
                         </p>
-                        <p className="text-white pb-10 text-l">I've worked a lot with .NET core in tandem with postgres
-                            or mongo.
-                            Laravel is my former lover, but after discovering the power of C# in .NET core I can't help
-                            but love C# more.
-                            PHP will always have a special place in my heart though, and would still love working with
-                            it.
-                            React is my favorite frontend framework so far, however the new Vue
-                            composition API looks like it could steal React's thunder.
+                        <p className="text-white pb-10 text-l">I've worked a lot with .NET, and it's been love at first sight.
+                            The ability to write code that's rigid enough that autocomplete is faster than doc-reading,
+                            while maintaining the flexibility to write versatile and highly reusable code is such a pleasure.
+                            It also doesn't hurt that's there is a pretty defined standard as to what <i>good</i> code is and
+                            being able to write it as much as I can.
                         </p>
                         <p className="text-white pb-10 text-l">
-                            My most pleasing development experience was probably deploying a kubernetes cluster on
-                            rancher.
-                            That piece of software is so magnificent I could honestly cry. If you ever want to chat
-                            about it
-                            I'm always available.
+                            Furthermore I'm an expert in Docker, software architecture, Event Driven Design,
+                            Domain Driven Design and Test Driven Design. Would love to start a crusade against code rot
+                            and an abstractionist at heart.
                         </p>
                         <p className="text-white pb-10 text-l">
-                            One of my more interesting obsessions would be Cognitive Behavioural Therapy. It is the most
-                            concrete
-                            translation of stoicism I've ever come across. Though I've shelved the release of
-                            Parley a bit, I still believe in
-                            bringing the therapy to more people. Feeling good should be for everyone. Hit me up
-                            if you're
-                            interested!
-                        </p>
-                        <p className="text-white pb-10 text-l">
-                            My latest venture is <a href="https://loopground.com" target="_blank">loopground</a>,
-                            and snugly fits into my philosophy of the 4 hour work week. Only four hours a week are spent
-                            on the dreadful bits, the rest can be categorized as hobby stuff. After a few intense months
-                            of building, it's now time to start generating revenue! Super stoked about this:)
+                            In the future I would really like to setup an in person software school for the web. I've
+                            experienced first hand what good and bad code can do to a company. Pair that with the
+                            current dichotomy between the market need for highly skilled developers, and universities
+                            (rightfully so) not filling that gap; I feel I could provide a lot of real value there.
                         </p>
                         <p className="text-white pb-10 text-l">
                             Live long and prosper, <br/>Ian
