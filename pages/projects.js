@@ -47,7 +47,7 @@ export default (props) => {
                                         and needing to keep a senior on-board.
                                     </p>
                                     <p className="text-white px-5 self-center font-bold text-sm sm:text-l">
-                                        .NET Core, Nuxt.js, Kubernetes, RabbitMQ
+                                        .NET 6, Service Bus, CQRS, DDD, Architecture, Masstransit
                                     </p>
                                 </div>
                             </li>
